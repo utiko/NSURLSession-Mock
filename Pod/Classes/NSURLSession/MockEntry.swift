@@ -65,7 +65,7 @@ class MockEntry: SessionMock, Equatable {
     // MARK: - Completion handler responder
     private func respondToCompletionHandler(request: URLRequest, extractions: [String], completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> (MockSessionDataTask) -> Void {
         return { task in
-            let response = self.response(request.url!, extractions)
+            let response = self.response(request, extractions)
 
             switch response {
             case .success(let statusCode, let headers, let body):
@@ -81,7 +81,7 @@ class MockEntry: SessionMock, Equatable {
     // MARK: - Session delegate responder
     private func respondToDelegate(request: URLRequest, extractions: [String], session: URLSession) -> (MockSessionDataTask) -> Void {
         return { task in
-            let response = self.response(request.url!, extractions)
+            let response = self.response(request, extractions)
 
             switch response {
             case let .success(statusCode, headers, body):

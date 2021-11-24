@@ -21,4 +21,4 @@ public enum MockResponse {
  
  Or, alternately, return a .Failure to deal with mocking errors before we hit the server (i.e. networking failure etc)
 */
-public typealias MockResponseHandler = (_ url: URL, _ extractions: [String]) -> MockResponse
+public typealias MockResponseHandler = (_ request: URLRequest, _ extractions: [String]) -> MockResponse
